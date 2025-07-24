@@ -69,8 +69,6 @@ print(idf)
 path = get_data_path(filename)
 glove = KeyedVectors.load_word2vec_format(path, binary = False)
 
-print(glove["notaword"] == None)
-
 def embed_text(text, vocabulary, counters):
     sum = np.zeros(200)
     word_list = process_doc(text)
