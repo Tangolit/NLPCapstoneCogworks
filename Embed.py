@@ -10,7 +10,6 @@ from mygrad import Tensor
 import os
 import torch
 
-
 with Path(get_data_path('resnet18_features.pkl')).open('rb') as f:
     resnet18_features = pickle.load(f)
 filename = get_data_path("captions_train2014.json")
@@ -54,6 +53,7 @@ def get_triplets(batch_size):
         triplets.append(true_caption, img_id, random.choice([i for i in image_ids if i != img_id]))
     return triplets
 
+#Not finished
 def compute_loss_accuracy(triplet, w_img):
     margin = 0.1
     cap, img_id_good, img_id_bad = triplet
@@ -79,7 +79,7 @@ class Img2Cap:
     def parameters(self):
         return [self.W]
     
-
+#Not Finished
 def train_model(mode, num_epochs, batch_size, learning_rate):
     optimizer = mg.nn.SGD(model.parameters(), learning_rate=learning_rate)
     
@@ -92,8 +92,3 @@ def train_model(mode, num_epochs, batch_size, learning_rate):
 
             caption, img_id_good, img_id_bad = triplet
             img_good = resne
-
-
-    
-
-

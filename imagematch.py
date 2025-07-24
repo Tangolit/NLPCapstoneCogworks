@@ -84,7 +84,7 @@ def query_db(caption_embedding, image_embeddings, topk=4):
         #find the similiarity between the quesry and embedding vector
         similarity= caption_embedding@ embedding_vector
         #appened each score into the scores list
-        scores.append(image_id, similarity)
+        scores.append((image_id, similarity))
     #sort all images so that the highest show, and only then goes up till k
     scores.sort(key=lambda x: x[1])
     #reverses the scores, so that biggest is fitst not smallest
@@ -118,7 +118,7 @@ def display_images(data, image_ids):
           captions.append(data.get_captions_from_image_id(image_id))
 
       for index,image in enumerate(images):
-            draw = ImageDraw.draw(image)
+            draw = ImageDraw.Draw(image)
             draw.text((10,10), captions[index], font = font, fill = (255,0,0))
             image.show()
 
